@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reson - Your Voice, Your Community</title>
   <meta name="description" content="Reson is a social media app built for authentic voice conversations, communities, and creator expression." />
-  <!-- App icon + favicon (AppIcon 1.png from asset catalog) -->
-  <link rel="icon" type="image/png" href="Reson/Assets.xcassets/AppIcon.imageset/AppIcon%201.png" />
-  <link rel="apple-touch-icon" href="Reson/Assets.xcassets/AppIcon.imageset/AppIcon%201.png" />
-  <!-- When you deploy, replace with your site’s absolute URL for link previews (e.g. https://reson.app/..) -->
-  <meta property="og:image" content="Reson/Assets.xcassets/AppIcon.imageset/AppIcon%201.png" />
-  <meta name="twitter:image" content="Reson/Assets.xcassets/AppIcon.imageset/AppIcon%201.png" />
+  <!-- App icon + favicon: app-icon.png lives next to this file (copy of AppIcon 1.png) for reliable loading (tab + nav) -->
+  <link rel="icon" type="image/png" href="./app-icon.png" />
+  <link rel="shortcut icon" type="image/png" href="./app-icon.png" />
+  <link rel="apple-touch-icon" href="./app-icon.png" />
+  <!-- When you deploy, set og/twitter image to your site’s absolute URL, e.g. https://yoursite.com/app-icon.png -->
+  <meta property="og:image" content="./app-icon.png" />
+  <meta name="twitter:image" content="./app-icon.png" />
   <style>
     :root {
       --bg: #070b1a;
@@ -73,6 +74,9 @@
     .logo-badge {
       width: 34px;
       height: 34px;
+      min-width: 34px;
+      min-height: 34px;
+      flex-shrink: 0;
       border-radius: 10px;
       display: block;
       object-fit: cover;
@@ -174,50 +178,70 @@
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 28px;
       box-shadow: var(--shadow);
-      padding: 1rem;
-      max-width: 450px;
+      padding: 0.65rem;
+      max-width: min(100%, 320px);
       margin-inline: auto;
     }
 
     .mock-screen {
       border-radius: 22px;
-      padding: 1rem;
-      min-height: 410px;
-      background:
-        radial-gradient(460px 200px at 70% 0, rgba(127, 77, 255, 0.35), transparent 70%),
-        linear-gradient(180deg, #0c1329, #0a1022);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.35rem 0.65rem;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      color: #dce4ff;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .feed-card {
-      margin-top: 1rem;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      line-height: 0;
+      background: #0a0a0c;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 0.9rem;
     }
 
-    .feed-card h4 {
-      margin: 0 0 0.4rem;
-      font-size: 0.98rem;
+    .hero-shot {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
-    .feed-card p {
+    /* App screenshots gallery */
+    #app {
+      scroll-margin-top: 1rem;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem 1.25rem;
+    }
+
+    .showcase-item {
       margin: 0;
-      font-size: 0.9rem;
-      color: #d0d7f3;
+    }
+
+    .phone-frame {
+      border-radius: 24px;
+      padding: 0.5rem;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+    }
+
+    .phone-frame img {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 18px;
+      border: 1px solid rgba(0, 0, 0, 0.35);
+    }
+
+    .showcase-item figcaption {
+      margin-top: 0.85rem;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .showcase-item strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.98rem;
+      margin-bottom: 0.2rem;
     }
 
     .section {
@@ -321,8 +345,13 @@
         grid-template-columns: 1fr;
       }
       .hero { padding-top: 4rem; }
-      .mock { max-width: 100%; }
+      .mock { max-width: min(280px, 72vw); }
       .nav-links a:not(.btn) { display: none; }
+      .showcase-grid {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+        margin-inline: auto;
+      }
     }
   </style>
 </head>
@@ -330,10 +359,11 @@
   <header class="nav">
     <div class="container nav-inner">
       <div class="logo">
-        <img class="logo-badge" src="Reson/Assets.xcassets/AppIcon.imageset/AppIcon%201.png" width="34" height="34" alt="Reson" />
+        <img class="logo-badge" src="./app-icon.png" width="34" height="34" alt="Reson" decoding="async" />
         Reson
       </div>
       <nav class="nav-links">
+        <a href="#app">App</a>
         <a href="#features">Features</a>
         <a href="#community">Community</a>
         <a href="#testimonials">Stories</a>
@@ -364,23 +394,94 @@
           </div>
         </div>
 
-        <aside class="mock" aria-label="Reson app preview">
+        <aside class="mock" aria-label="Reson app preview — home feed">
           <div class="mock-screen">
-            <span class="chip">Trending on Reson</span>
-            <div class="feed-card">
-              <h4>Creator Spotlight: The Morning Loop</h4>
-              <p>2 min voice post - "How I grew my audience with daily storytelling."</p>
-            </div>
-            <div class="feed-card">
-              <h4>Community Thread: Startup Founders</h4>
-              <p>356 replies - "What was your biggest week-one lesson?"</p>
-            </div>
-            <div class="feed-card">
-              <h4>Live Circle Tonight</h4>
-              <p>Join creators from music, tech, and sports for an open voice room at 8:00 PM.</p>
-            </div>
+            <img
+              class="hero-shot"
+              src="./assets/feed-dark.png"
+              width="390"
+              height="844"
+              alt="Reson home feed with voice posts, waveforms, and media in dark mode"
+              loading="eager"
+              decoding="async"
+            />
           </div>
         </aside>
+      </div>
+    </section>
+
+    <section id="app" class="section">
+      <div class="container">
+        <h2>Inside the app</h2>
+        <p class="lead">
+          Voice-first posts, image &amp; video with audio, and a feed that shines in light or dark mode — real screenshots from Reson.
+        </p>
+        <div class="showcase-grid">
+          <figure class="showcase-item">
+            <div class="phone-frame">
+              <img
+                src="./assets/feed-light.png"
+                width="390"
+                height="844"
+                alt="Reson For You feed with voice waveforms on a light background"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>
+              <strong>Home — For You</strong>
+              Light theme with voice waveforms, captions, and quick actions.
+            </figcaption>
+          </figure>
+          <figure class="showcase-item">
+            <div class="phone-frame">
+              <img
+                src="./assets/feed-dark.png"
+                width="390"
+                height="844"
+                alt="Reson feed with photo post and voice overlay in dark mode"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>
+              <strong>Home — dark mode</strong>
+              Rich media posts with inline audio player and a focused dark UI.
+            </figcaption>
+          </figure>
+          <figure class="showcase-item">
+            <div class="phone-frame">
+              <img
+                src="./assets/create-post-voice.png"
+                width="390"
+                height="844"
+                alt="Create Post screen — Voice Post tab with record control"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>
+              <strong>Create Post — Voice</strong>
+              Record first, add a caption, and publish when you’re ready.
+            </figcaption>
+          </figure>
+          <figure class="showcase-item">
+            <div class="phone-frame">
+              <img
+                src="./assets/create-post-media.png"
+                width="390"
+                height="844"
+                alt="Create Post screen — Image or video plus voice"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>
+              <strong>Create Post — Media + voice</strong>
+              Pick from library or camera, layer voice, and share the full story.
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
