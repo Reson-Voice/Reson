@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reson - Your Voice, Your Community</title>
   <meta name="description" content="Reson is a social media app built for authentic voice conversations, communities, and creator expression." />
-  <!-- App icon + favicon: app-icon.png lives next to this file (copy of AppIcon 1.png) for reliable loading (tab + nav) -->
-  <link rel="icon" type="image/png" href="./app-icon.png" />
-  <link rel="shortcut icon" type="image/png" href="./app-icon.png" />
-  <link rel="apple-touch-icon" href="./app-icon.png" />
-  <!-- When you deploy, set og/twitter image to your site’s absolute URL, e.g. https://yoursite.com/app-icon.png -->
-  <meta property="og:image" content="./app-icon.png" />
-  <meta name="twitter:image" content="./app-icon.png" />
+  <!-- Favicon: same filename as repo root (space → %20 in URL) -->
+  <link rel="icon" type="image/png" href="./AppIcon%201.png" />
+  <link rel="shortcut icon" type="image/png" href="./AppIcon%201.png" />
+  <link rel="apple-touch-icon" href="./AppIcon%201.png" />
+  <!-- For production sharing, set og/twitter to absolute URLs, e.g. https://yoursite.com/AppIcon%201.png -->
+  <meta property="og:image" content="./AppIcon%201.png" />
+  <meta name="twitter:image" content="./AppIcon%201.png" />
   <style>
     :root {
       --bg: #070b1a;
@@ -171,6 +171,19 @@
       display: block;
       font-size: 1.15rem;
       margin-bottom: 0.2rem;
+    }
+
+    .chip {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--accent);
+      margin-bottom: 1rem;
     }
 
     .mock {
@@ -359,7 +372,7 @@
   <header class="nav">
     <div class="container nav-inner">
       <div class="logo">
-        <img class="logo-badge" src="./app-icon.png" width="34" height="34" alt="Reson" decoding="async" />
+        <img class="logo-badge" src="./AppIcon%201.png" width="34" height="34" alt="Reson" decoding="async" />
         Reson
       </div>
       <nav class="nav-links">
@@ -388,9 +401,9 @@
             <a class="btn btn-secondary" href="#features">Explore Features</a>
           </div>
           <div class="stats" aria-label="App stats">
-            <div class="stat"><strong>120K+</strong><span>Active Users</span></div>
-            <div class="stat"><strong>3.5M</strong><span>Voice Plays</span></div>
-            <div class="stat"><strong>4.8/5</strong><span>User Rating</span></div>
+            <div class="stat"><strong>coming soon+</strong><span>Active Users</span></div>
+            <div class="stat"><strong>coming soon M</strong><span>Voice Plays</span></div>
+            <div class="stat"><strong>coming soon</strong><span>User Rating</span></div>
           </div>
         </div>
 
@@ -398,7 +411,7 @@
           <div class="mock-screen">
             <img
               class="hero-shot"
-              src="./home2-d9b36e14-590d-4710-bcf0-6fcd0dd59d7c.png"
+              src="./feed-dark.png"
               width="390"
               height="844"
               alt="Reson home feed with voice posts, waveforms, and media in dark mode"
@@ -420,7 +433,7 @@
           <figure class="showcase-item">
             <div class="phone-frame">
               <img
-                src="./home1-d13532c7-2499-4afa-aa31-f39fd86a7e09.png"
+                src="./feed-light.png"
                 width="390"
                 height="844"
                 alt="Reson For You feed with voice waveforms on a light background"
@@ -436,7 +449,7 @@
           <figure class="showcase-item">
             <div class="phone-frame">
               <img
-                src="./home2-d9b36e14-590d-4710-bcf0-6fcd0dd59d7c.png"
+                src="./feed-dark.png"
                 width="390"
                 height="844"
                 alt="Reson feed with photo post and voice overlay in dark mode"
@@ -452,7 +465,7 @@
           <figure class="showcase-item">
             <div class="phone-frame">
               <img
-                src="./create_post2-581ca270-9099-42d1-9eaf-85eb475d2051.png"
+                src="./create-post-voice.png"
                 width="390"
                 height="844"
                 alt="Create Post screen — Voice Post tab with record control"
@@ -468,7 +481,7 @@
           <figure class="showcase-item">
             <div class="phone-frame">
               <img
-                src="./createpost-9ba60dd2-0043-49f5-8d77-e18dc78292c0.png"
+                src="./create-post-media.png"
                 width="390"
                 height="844"
                 alt="Create Post screen — Image or video plus voice"
