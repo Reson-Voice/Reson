@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reson - Your Voice, Your Community</title>
   <meta name="description" content="Reson is a social media app built for authentic voice conversations, communities, and creator expression." />
+  <!-- App icon + favicon (AppIcon 1.png from asset catalog) -->
+  <link rel="icon" type="image/png" href="Reson/Assets.xcassets/AppIcon.imageset/AppIcon%201.png" />
+  <link rel="apple-touch-icon" href="Reson/Assets.xcassets/AppIcon.imageset/AppIcon%201.png" />
+  <!-- When you deploy, replace with your site’s absolute URL for link previews (e.g. https://reson.app/...) -->
+  <meta property="og:image" content="Reson/Assets.xcassets/AppIcon.imageset/AppIcon%201.png" />
+  <meta name="twitter:image" content="Reson/Assets.xcassets/AppIcon.imageset/AppIcon%201.png" />
   <style>
     :root {
       --bg: #070b1a;
@@ -68,11 +74,9 @@
       width: 34px;
       height: 34px;
       border-radius: 10px;
-      background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
-      display: grid;
-      place-items: center;
-      box-shadow: 0 8px 20px rgba(90, 125, 255, 0.45);
-      font-weight: 800;
+      display: block;
+      object-fit: cover;
+      box-shadow: 0 8px 20px rgba(90, 125, 255, 0.35);
     }
 
     .nav-links {
@@ -326,7 +330,7 @@
   <header class="nav">
     <div class="container nav-inner">
       <div class="logo">
-        <span class="logo-badge">R</span>
+        <img class="logo-badge" src="Reson/Assets.xcassets/AppIcon.imageset/AppIcon%201.png" width="34" height="34" alt="Reson" />
         Reson
       </div>
       <nav class="nav-links">
