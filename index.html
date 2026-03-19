@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reson - Your Voice, Your Community</title>
+  <meta name="description" content="Reson is a social media app built for authentic voice conversations, communities, and creator expression." />
+  <style>
+    :root {
+      --bg: #070b1a;
+      --bg-soft: #10162e;
+      --card: rgba(255, 255, 255, 0.08);
+      --text: #f5f7ff;
+      --text-muted: #c7cce6;
+      --brand-1: #5a7dff;
+      --brand-2: #7f4dff;
+      --accent: #37d4b5;
+      --ring: rgba(122, 150, 255, 0.45);
+      --max: 1120px;
+      --radius: 18px;
+      --shadow: 0 20px 50px rgba(6, 10, 24, 0.5);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(90, 125, 255, 0.32), transparent 60%),
+        radial-gradient(1000px 550px at 100% 0%, rgba(55, 212, 181, 0.2), transparent 58%),
+        var(--bg);
+      line-height: 1.55;
+    }
+
+    .container {
+      width: min(100% - 2.4rem, var(--max));
+      margin-inline: auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(7, 11, 26, 0.6);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 10;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.95rem 0;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      font-size: 1.05rem;
+    }
+
+    .logo-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 20px rgba(90, 125, 255, 0.45);
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.45rem;
+      border-radius: 999px;
+      padding: 0.7rem 1.15rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(100, 110, 255, 0.45);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .hero {
+      padding: 5rem 0 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 3.75rem);
+      line-height: 1.08;
+      letter-spacing: -1.2px;
+      margin: 0 0 1rem;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      max-width: 56ch;
+      margin: 0 0 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .stats {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 0.8rem 0.95rem;
+      min-width: 120px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .mock {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      max-width: 450px;
+      margin-inline: auto;
+    }
+
+    .mock-screen {
+      border-radius: 22px;
+      padding: 1rem;
+      min-height: 410px;
+      background:
+        radial-gradient(460px 200px at 70% 0, rgba(127, 77, 255, 0.35), transparent 70%),
+        linear-gradient(180deg, #0c1329, #0a1022);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: #dce4ff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .feed-card {
+      margin-top: 1rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.9rem;
+    }
+
+    .feed-card h4 {
+      margin: 0 0 0.4rem;
+      font-size: 0.98rem;
+    }
+
+    .feed-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #d0d7f3;
+    }
+
+    .section {
+      padding: 3.8rem 0;
+    }
+
+    .section h2 {
+      margin: 0 0 0.65rem;
+      font-size: clamp(1.6rem, 4.2vw, 2.35rem);
+      letter-spacing: -0.6px;
+    }
+
+    .section .lead {
+      margin: 0 0 1.8rem;
+      color: var(--text-muted);
+      max-width: 65ch;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .feature {
+      border-radius: var(--radius);
+      padding: 1.15rem;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .feature .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(90, 125, 255, 0.3), rgba(127, 77, 255, 0.38));
+      margin-bottom: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .feature h3 {
+      margin: 0 0 0.45rem;
+      font-size: 1.05rem;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .quote {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+
+    .quote p {
+      margin: 0 0 0.75rem;
+      color: #d9dff9;
+      font-size: 0.95rem;
+    }
+
+    .quote small { color: #b4bddf; }
+
+    .cta {
+      margin-top: 1.2rem;
+      border-radius: 22px;
+      padding: 1.6rem;
+      background: linear-gradient(135deg, rgba(90, 125, 255, 0.3), rgba(55, 212, 181, 0.25));
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      margin-top: 4rem;
+      padding: 1.3rem 0 2.4rem;
+      color: #aeb8dc;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+      .hero { padding-top: 4rem; }
+      .mock { max-width: 100%; }
+      .nav-links a:not(.btn) { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        <span class="logo-badge">R</span>
+        Reson
+      </div>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#community">Community</a>
+        <a href="#testimonials">Stories</a>
+        <a class="btn btn-primary" href="#download">Get the App</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="chip">New social audio experience</span>
+          <h1>Connect Through Voice, Stories, and Real Community.</h1>
+          <p>
+            Reson is the social media app where creators, listeners, and friends share voice notes,
+            short posts, and authentic moments. Build your audience, discover new people, and keep
+            conversations human.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#download">Download Reson</a>
+            <a class="btn btn-secondary" href="#features">Explore Features</a>
+          </div>
+          <div class="stats" aria-label="App stats">
+            <div class="stat"><strong>120K+</strong><span>Active Users</span></div>
+            <div class="stat"><strong>3.5M</strong><span>Voice Plays</span></div>
+            <div class="stat"><strong>4.8/5</strong><span>User Rating</span></div>
+          </div>
+        </div>
+
+        <aside class="mock" aria-label="Reson app preview">
+          <div class="mock-screen">
+            <span class="chip">Trending on Reson</span>
+            <div class="feed-card">
+              <h4>Creator Spotlight: The Morning Loop</h4>
+              <p>2 min voice post - "How I grew my audience with daily storytelling."</p>
+            </div>
+            <div class="feed-card">
+              <h4>Community Thread: Startup Founders</h4>
+              <p>356 replies - "What was your biggest week-one lesson?"</p>
+            </div>
+            <div class="feed-card">
+              <h4>Live Circle Tonight</h4>
+              <p>Join creators from music, tech, and sports for an open voice room at 8:00 PM.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <h2>Designed for a modern social media experience</h2>
+        <p class="lead">From profile customization to voice-first posting, Reson gives users expressive tools with a clean, fast interface.</p>
+        <div class="grid-3">
+          <article class="feature">
+            <div class="icon">🎙️</div>
+            <h3>Voice-First Posts</h3>
+            <p>Record and publish voice notes instantly, with rich post previews and smooth playback in-feed.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">🖼️</div>
+            <h3>Rich Profiles</h3>
+            <p>Custom avatars, full headers, and clean profile layouts that highlight identity and creativity.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">🌐</div>
+            <h3>Community Discovery</h3>
+            <p>Find creators and conversations by category, trend signals, and personalized recommendations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="community" class="section">
+      <div class="container">
+        <h2>Where creators and communities grow together</h2>
+        <p class="lead">Reson helps creators share their voice, start meaningful threads, and keep followers engaged with authentic content.</p>
+        <div class="grid-3">
+          <article class="feature">
+            <div class="icon">⚡</div>
+            <h3>Fast, Lightweight Feed</h3>
+            <p>Scroll through voice clips, photos, and updates with responsive interactions and modern design.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">🔒</div>
+            <h3>Privacy & Safety</h3>
+            <p>Controls for account security, content moderation tools, and safer spaces for conversations.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">📈</div>
+            <h3>Creator Momentum</h3>
+            <p>Insights and activity signals that help creators understand what content resonates best.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="section">
+      <div class="container">
+        <h2>Loved by social creators</h2>
+        <p class="lead">People use Reson to build communities that feel personal, expressive, and alive.</p>
+        <div class="testimonials">
+          <article class="quote">
+            <p>"Reson made my content feel real again. My followers connect more with voice than text."</p>
+            <small>- Maya, lifestyle creator</small>
+          </article>
+          <article class="quote">
+            <p>"The profile and feed design is beautiful, and discovery helped me reach new listeners fast."</p>
+            <small>- Jalen, podcast host</small>
+          </article>
+          <article class="quote">
+            <p>"It feels like social media with depth. Less noise, more actual conversation."</p>
+            <small>- Sofia, community manager</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="section">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2 style="margin:0 0 .5rem;">Ready to join Reson?</h2>
+            <p style="margin:0; color:#e5e9ff;">Download the app and start sharing your voice today.</p>
+          </div>
+          <div style="display:flex; gap:.7rem; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="#">App Store</a>
+            <a class="btn btn-secondary" href="#">Google Play</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 Reson. All rights reserved.</span>
+    </div>
+  </footer>
+</body>
+</html>
